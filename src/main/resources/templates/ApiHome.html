@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>API Home</title>
+<!-- CSS only -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+<!-- JS, Popper.js, and jQuery -->
+
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
+ <!--Data Table-->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css"/>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<script>
+$(document).ready(function() {
+    $('#example').DataTable();
+} );
+</script>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-primary">
+  <a class="navbar-brand" href="#">Performance LightHouse API</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        
+  </div>
+</nav>
+<br>
+<div class="container">
+<table id="example" class="display" style="width:100%">
+        <thead>
+            <tr>
+                <th>Method Name</th>
+                <th>Method Type</th>
+                <th>Description</th>
+                <th>URL</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style="color: blue;">getHomeView(Model model){ }</td>
+                <td><span class="badge badge-primary">Get</span></td>
+                <td>Returns Method List View</td>
+                <td>/api/ver1/Home</td>
+            </tr>
+            <tr>
+                <td style="color: blue;">List<Application_Master> findPageByName(@PathVariable("activation") String activation){ }</td>
+                <td><span class="badge badge-primary">Get</span></td>
+                <td>Returns Active Application</td>
+                <td>/api/appMaster/getApps/{activation}</td>
+            </tr>
+            <tr>
+               <td style="color: blue;">List<Application_User_Mapper> getAllActiveUsers(){ }</td>
+                <td><span class="badge badge-primary">Get</span></td>
+                <td>Returns Application User Relationships</td>
+                <td>/api/appUserMap/getActive</td>
+            </tr>
+            <tr>
+                <td style="color: blue;">Navigation_Master addNavigation(@RequestBody Navigation_Master theNavBody){ }</td>
+                <td><span class="badge badge-success">Post</span></td>
+                <td>Inserts A Navigation Type Navigation History table</td>
+                <td>/api/navHistory/setNavHist</td>
+            </tr>
+            <tr>
+                <td style="color: blue;">Navigation_Master addEmployee(@RequestBody Navigation_Master theNavBody) { }</td>
+                <td><span class="badge badge-success">Post</span></td>
+                <td>Inserts Navigation type to Navigation Table</td>
+                <td>/api/navMaster/setNavs</td>
+            </tr>
+            <tr>
+                <td style="color: blue;">List<Navigation_Master> findPageByName(@PathVariable("appid") String appid, @PathVariable("pageId") String pageId, @PathVariable("tcId") String tcId,
+			@PathVariable("uId") String uId){ }</td>
+                <td><span class="badge badge-primary">Get</span></td>
+                <td>Returns Navigation Values</td>
+                <td>/api/navMaster/getNavs/{tcId}/{appid}/{pageId}/{uId}</td>
+            </tr>
+            <tr>
+                <td style="color: blue;">public Page_Master findPageByName(@RequestParam(name ="pageName") String pageName){ }</td>
+                <td><span class="badge badge-primary">Get</span></td>
+                <td>Returns a PageName with Id</td>
+                <td>/api/pageMaster/getIdPages?pageName=</td>
+            </tr>
+            <tr>
+                <td style="color: blue;">List<Page_Master> getPages() { }</td>
+                <td><span class="badge badge-primary">Get</span></td>
+                <td>Returns all PageName as List</td>
+                <td>/api/pageMaster/getPages</td>
+            </tr>
+            <tr>
+                <td style="color: blue;">Page_Master addPage(@RequestBody Page_Master page) { }</td>
+                <td><span class="badge badge-success">Post</span></td>
+                <td>Inserts a Page</td>
+                <td>/api/pageMaster/setPages</td>
+            </tr>
+            <tr>
+                <td style="color: blue;">getResourceMapper() { }</td>
+                <td><span class="badge badge-success">Post</span></td>
+                <td>Copies Resources to ResourceMapper</td>
+                <td>/api/resourceMapHist/copyNow</td>
+            </tr>
+            <tr>
+                <td style="color: blue;">List<Resource_Mapper> getResources(){ }</td>
+                <td><span class="badge badge-primary">Get</span></td>
+                <td>Returns All Resources</td>
+                <td>/api/resMap/getResources</td>
+            </tr>
+            <tr>
+                <td style="color: blue;">Resource_Mapper setResourceMapper(@RequestBody Resource_Mapper rsMapper){ }</td>
+                <td><span class="badge badge-success">Post</span></td>
+                <td>Inserts a Resource</td>
+                <td>/api/resMap/setResource</td>
+            </tr>
+            <tr>
+                <td style="color: blue;">delResourceMapper(@PathVariable("resId") int id){ }</td>
+                <td><span class="badge badge-danger">Delete</span></td>
+                <td>Deletes Resource Table Entries</td>
+                <td>/api/resMap/delResource/{resId}</td>
+            </tr>
+            <tr>
+                <td style="color: blue;">Resource_Master setResourceMasterBody(@RequestBody Resource_Master resMaster){ }</td>
+                <td><span class="badge badge-success">Post</span></td>
+                <td>Inserts A Resource Name</td>
+                <td>/api/resMaster/setResource</td>
+            </tr>
+            <tr>
+                <td style="color: blue;">public Resource_Master getResourceByName(@RequestParam(name ="rsNm") String rsNm) { }</td>
+                <td><span class="badge badge-primary">Get</span></td>
+                <td>Returns A Particular Resource</td>
+                <td>/api/resMaster/getIdResource>rsNM=</td>
+            </tr>
+            <tr>
+                <td style="color: blue;">List<TestScenario_Master> findPageByName(@PathVariable("tcActiveId") int tcActiveId){ }</td>
+                <td><span class="badge badge-success">Post</span></td>
+                <td>Returns All Activated Test Cases</td>
+                <td>/api/testMaster/getTestCase/{tcActiveId}</td>
+            </tr>
+            <tr>
+                <td style="color: blue;">List<TestScenario_Master> getAllActiveTestScenariosByName(@PathVariable("tsname") String tsname) { }</td>
+                <td><span class="badge badge-primary">Get</span></td>
+                <td>Returns Test Case by Name</td>
+                <td>/api/testMaster/getTestCases/{tsname}</td>
+            </tr>
+            <tr>
+               <td style="color: blue;">TestScenario_Master updateTestScenariosByName(@PathVariable("tsname") String tsname, @PathVariable("uid") String uid){ }</td>
+                <td><span class="badge badge-warning">Put</span></td>
+                <td>Update TestCase By Name & UserId</td>
+                <td>/api/testMaster/putTestCases/{tsname}/{uid}</td>
+            </tr>
+            <tr>
+                <td style="color: blue;">TestScenario_Master addTestCase(@RequestBody TestScenario_Master theTs){ }</td>
+                <td><span class="badge badge-success">Post</span></td>
+                <td>Inserts a TestCase</td>
+                <td>/api/testMaster/setTestCases</td>
+            </tr>
+            <tr>
+                <td style="color: blue;">User_Registration getTheUserDetails(@PathVariable("apiKey") String apiKey){ }</td>
+                <td><span class="badge badge-primary">Get</span></td>
+                <td>Returns User</td>
+                <td>/api/userAuth/getNavs/{apiKey}</td>
+            </tr>
+                                    
+        </tbody>
+        <tfoot>
+            <tr>
+               <th>Method Name</th>
+                <th>Method Type</th>
+                <th>Description</th>
+                <th>URL</th>
+            </tr>
+        </tfoot>
+    </table>
+    </div>
+</body>
+</html>
